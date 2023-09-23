@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{%block content%}
+{%if error %}
+<div class="alert alert-danger">{{error}}</div>
+{%endif%}
+<br>
+<h1>Create Account</h1><hr>
+<form method="POST">
+    {%if a %}
+  <div class="mb-3">
+      <label for="name">UserName</label>
+      <input type="text" value="{{a['name']}}" required class="form-control" placeholder="Enter your username.." id="name"name="name">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" value="{{a['email']}}" placeholder="Enter your email.." required class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  {%else%}
+   <div class="mb-3">
+      <label for="name">UserName</label>
+      <input type="text" required class="form-control" placeholder="Enter your username.."id="name"name="name">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email"  required class="form-control" placeholder="Enter your email.." name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  {%endif%}
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" placeholder="Enter your password.."required name="password"class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3">
+      <label for="c_password">ConformPassword</label>
+      <input id="c_password" placeholder="Conform your password.." required name="c_password" class="form-control" type="password">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form><br>
+<span>Already have an account ? <a class="text-decoration-none" href="/login">Login</a></span>
+{%endblock%}

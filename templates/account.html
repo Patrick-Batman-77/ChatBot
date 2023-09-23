@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+
+ <div class="d-flex align-items-center">
+            <img class="rounded-circle" style="width: 100px; height: 100px" src="{{ pic }}" alt="">
+            <div class="ml-3">
+                <h1>{{ current_user.user_name }}</h1>
+                <p>{{ current_user.email }}</p>
+            </div>
+</div>
+<br>
+<h2>Account Info:</h2>
+<hr>
+ <form method="POST">
+    
+   <div class="mb-3">
+      <label for="name">UserName</label>
+      <input type="text" value="{{current_user.user_name}}" required class="form-control" placeholder="Enter your username.."id="name"name="name">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email"  required value="{{current_user.email}}" class="form-control" placeholder="Enter your email.." name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" value="{{current_user.password}}" placeholder="Enter your password.."required name="password"class="form-control" id="exampleInputPassword1">
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">Update</button>
+
+</form><br><hr>
+<div class="text-center">
+    <a type="button" class="btn btn-danger" href="/delete/{{current_user.id}}">Delete Account</a>
+</div>
+{% endblock %}
